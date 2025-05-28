@@ -1,0 +1,62 @@
+{% extends 'base/pan_con_queso.html' %}
+
+{% block arroz_con_pollo %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/proveedores.css' %}">
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<section id="proveedores">
+    <h2 class="h2">Proveedores</h2>
+    <a href="{% url 'Proveedor' %}">
+    <div class="categoria-nuevo">
+        <h3>Proveedores</h3>
+        <ul>
+            <li>{{proveedores_nuevos}}</li>
+        </ul>
+    </div>
+    </a>
+    
+    <h3 class="h3">Ultimos Proveedores Registrados</h3>
+    
+    <form method="get" action="{% url 'proveedores' %}" style="position: relative; margin: 35px 130px; margin-bottom: -20px;">
+        {% csrf_token %}
+        <input type="text" name="q" placeholder="Buscar proveedores..." value="{{ request.GET.q }}" style="height: 25px; padding: 5px; width: 300px;">
+        <button type="submit" style="height: 25px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Buscar</button>
+    </form>
+
+    
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th style="background-color: #4CAF50; color: white; padding: 10px; text-align: left; border: 1px solid #ddd;">Nombre</th>
+                <th style="background-color: #4CAF50; color: white; padding: 10px; text-align: left; border: 1px solid #ddd;">Cedula</th>
+                <th style="background-color: #4CAF50; color: white; padding: 10px; text-align: left; border: 1px solid #ddd;">Telefono</th>
+                <th style="background-color: #4CAF50; color: white; padding: 10px; text-align: left; border: 1px solid #ddd;">Direccion</th>
+                <th style="background-color: #4CAF50; color: white; padding: 10px; text-align: left; border: 1px solid #ddd;">Email</th>
+                <th style="background-color: #4CAF50; color: white; padding: 10px; text-align: left; border: 1px solid #ddd;">Fecha de Registro</th>
+            </tr>
+        </thead>
+        <tbody id="proveedor-table-body">
+            {% if proveedores %}
+                {% for r in proveedores %}
+                    <tr>
+                        <td>{{r.Nombre}} {{r.Apellido}}</td>
+                        <td>{{r.Cedula}}</td>
+                        <td>{{r.Telefono}}</td>
+                        <td>{{r.Direccion}}</td>
+                        <td>{{r.Email}}</td>
+                        <td>{{r.Fecha_registro}}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">No hay registros disponibles</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+<form action="{% url 'logout' %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="salir">Cerrar sesión</button>
+</form>
+</section>
+{% endblock %}

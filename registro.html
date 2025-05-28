@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="{% static 'css/registro.css'%}">
+</head>
+<body>
+    <img src="{% static 'img/logo.png' %}" alt="logo" class="logo">
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <h1>Registro</h1>
+        <label for="text"></label>
+        <input type="text" id="text" name="text" placeholder="Nombre..." required><br><br>
+    
+        <label for="text"></label>
+        <input type="text" id="text" name="text" placeholder="Apellido..." required><br><br>
+    
+        <label for="email"></label>
+        <input type="email" id="email" name="email" placeholder="Correo Electrónico..." required><br><br>
+    
+        <label for="tel"></label>
+        <input type="tel" id="tel" name="tel" placeholder="Teléfono..." required><br><br>
+    
+        <label for="date"></label>
+        <input type="date" id="date" name="date" placeholder="Fecha de nacimiento..." required><br><br>
+    
+        <label class="genero" for="select">Género</label>
+        <select id="select" name="select" required>
+            <option value="opcion1">Masculino</option>
+            <option value="opcion2">Femenino</option>
+            <option value="opcion3">Prefiero no decirlo</option>
+        </select><br><br>
+    
+        <label for="password"></label>
+        <input type="password" id="password" name="password" placeholder="Contraseña..." required><br><br>
+    
+        <label class="terminos" for="checkbox">Acepto los términos y condiciones</label>
+        <input class="check" type="checkbox" id="checkbox" name="checkbox" required><br><br>
+    
+        <input class="boton" type="submit" value="Enviar">
+        <input class="boton" type="reset" value="Limpiar">
+    </form>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
