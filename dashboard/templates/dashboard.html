@@ -1,0 +1,119 @@
+{% extends 'base/pan_con_queso.html' %}
+
+{% block arroz_con_pollo %}
+{% load static %}      
+    <header class="main-header">
+        <div class="search-wrapper">
+            <span class="ti-search"></span>
+            <input type="search" placeholder="Buscar...">
+        </div>
+        
+        <div class="social-icons">
+            <span class="ti-bell"></span>
+            <span class="ti-comment"></span>
+            <div></div>
+        </div>
+    </header>
+
+<form action="{% url 'logout' %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="salir">Cerrar sesión</button>
+</form>
+    
+    <main>
+        
+        <h2 class="dash-title">Supervisión</h2>
+        
+        <div class="dash-cards">
+            <!-- Tarjetas existentes -->
+        </div>
+        
+        
+        <section class="recent">
+            <div class="activity-grid">
+                <div class="activity-card">
+                    <h3>Actividad reciente</h3>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Acción</th>
+                                    <th>Modelo</th>
+                                    <th>Detalles</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for log in audit_logs %}
+                                <tr>
+                                    <td>
+                                        {% if log.user %}
+                                            {{ log.user.username }}
+                                        {% else %}
+                                            Anónimo
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ log.action }}</td>
+                                    <td>{{ log.model_name }}</td>
+                                    <td>{{ log.details }}</td>
+                                    <td>{{ log.timestamp }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5">No hay registros de auditoría disponibles.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="summary">
+                    <div class="summary-card">
+                        <div class="summary-single">
+                            <span class="ti-id-badge"></span>
+                            <div>
+                                <h5>{{clientes_nuevos}}</h5>
+                                <small>Clientes</small>
+                            </div>
+                        </div>
+                        <div class="summary-single">
+                            <span class="ti-calendar"></span>
+                            <div>
+                                <h5>{{proveedores_nuevos}}</h5>
+                                <small>Proveedores</small>
+                            </div>
+                        </div>
+                        <div class="summary-single">
+                            <span class="ti-face-smile"></span>
+                            <div>
+                                <h5>{{productos_nuevos}}</h5>
+                                <small>Productos Nuevos</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bday-card">
+                        <div class="bday-flex">
+                            <div class="bday-img"></div>
+                            <div class="bday-info">
+                                <h5>¿Todo listo por aquí?</h5>
+                                <small>Presiona este botón si deseas ir a la página web</small>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button style='cursor: pointer;' class="btn btn-primary">
+                                <a href="{% url 'index'%}" style="text-decoration: none; color: aliceblue;"><span class="ti-gift">¡Visita nuestro sitio web!</span></a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    <p class="derechos">Todos los derechos reservados © - FERREELECTRI PLUS</p>
+{% endblock %}

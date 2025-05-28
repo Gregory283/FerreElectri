@@ -1,0 +1,39 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+
+<img src="{% static 'img/logo.png' %}" alt="logo" class="logo">
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <h1>Inicie sesión</h1>
+    
+    {% if form.errors %}
+    <div class="error-messages">
+        <ul>
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    
+    <div class="input-box">
+        <span class="icon">
+            <ion-icon class="mail" name="mail-outline"></ion-icon>
+        </span>
+        <label for="username"></label>
+        <input type="text" id="username" name="username" required placeholder="Nombre de usuario..."><br><br>
+    </div>
+    <div class="input-box">
+        <span class="icon">
+            <ion-icon class="lock" name="lock-closed-outline"></ion-icon>
+        </span>
+        <label for="password"></label>
+        <input type="password" id="password" name="password" placeholder="Contraseña..." required><br><br>
+    </div>
+    <input class="boton" type="submit" value="Iniciar sesión">
+    <input class="boton" type="reset" value="Limpiar">
+    <p>¿No tienes una cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
+    <p>¿Olvidaste tu contraseña? <a href="{% url 'recuperar' %}">Recupérala</a></p>
+</form>

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{racismo}}</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/inventario.css' %}">
+    <link rel="stylesheet" href="{% static 'css/clientes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/proveedores.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a href="{% url 'dashboard'%}">
+            <img src="{% static 'img/logo.png' %}" alt="logo de la empresa">
+        </a>
+        <h2 class="rif"><i>V-12847449-4</i></h2>
+        <hr class="hr">
+        <ul>
+            {% if perms.Usuario.view_cliente %}
+            <li><span class="material-symbols-outlined">
+                    person
+                </span><a href="{% url 'clientes'%}"> Clientes</a></li>
+            {% endif %}
+            {% if perms.Usuario.view_proveedor %}
+            <li><span class="material-symbols-outlined">
+                    local_shipping
+                </span><a href="{% url 'proveedores'%}"> Proveedores</a></li>
+            {% endif %}
+            {% if perms.Usuario.view_inventario %}
+            <li><span class="material-symbols-outlined">
+                    inventory
+                </span><a href="{% url 'inventario'%}"> Inventario</a></li>
+            {% endif %}
+        </ul>
+        <hr class="hr1">
+    </nav>
+</header>
+
+
+    {% block arroz_con_pollo %}
+    {% endblock %}
+    
+    
+    <p class="derechos">Todos los derechos reservados © - FERREELECTRI PLUS</p>
+</body>
+</html>
+

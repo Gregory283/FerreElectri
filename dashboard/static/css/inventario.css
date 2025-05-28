@@ -1,0 +1,118 @@
+/* Contenedor para las categorías */
+.categorias-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+/* .navbar ul .inventario {
+    background-color: #07ddfe;
+    margin: 50px -20px;
+    font-size: 35px;
+} */
+/* Estilos para los cuadros de diferentes colores según el tipo de cliente */
+#inventario li {
+    list-style: none;
+}
+#inventario .h2 {
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 60px;
+    margin-left: 120px;
+}
+#inventario .h3 {
+    margin-bottom: -10px;
+    font-size: 40px;
+    margin-left: 650px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.categoria-nuevo,
+.categoria-regular,
+.categoria-vip {
+    background-color: gold;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 29%;
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 19px;
+    margin-top: 0px;
+    font-family: 'Arial', sans-serif; /* Fuente bonita */
+}
+.categoria-regular {
+    background-color: lightblue;
+    border: 2px solid #ADD8E6;
+}
+
+.categoria-vip {
+    background-color: lightgreen;
+    border: 2px solid #90EE90;
+}
+
+/* Estilos para el formulario de registro de clientes */
+#client-form {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#client-form input[type="text"],
+#client-form input[type="email"],
+#client-form input[type="tel"],
+#client-form input[type="address"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+#client-form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    padding: 20px;
+    top: 410px;
+    height: 100px;
+    right: 75px;
+    font-size: 25px;
+}
+
+#client-form button[type="submit"]:hover {
+    background-color: #139319;
+}
+#inventario table {
+    color: #000;
+    font-size: 20px;
+    width: 90%;
+    margin-left: 130px;
+    margin-top: 30px;
+    border-collapse: collapse;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+#inventario table th,
+#inventario table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#inventario table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+#client-table-body {
+    text-align: center;
+}
